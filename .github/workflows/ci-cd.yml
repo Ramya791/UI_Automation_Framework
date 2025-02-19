@@ -33,8 +33,8 @@ jobs:
       - name: Run Selenium Tests
         run: mvn test  # Executes all test cases
 
-      - name: Clean Old Reports
-        run: rm -rf target/test-classes/test-output/* || true  # Cleanup old reports
+      # - name: Clean Old Reports
+      #   run: rm -rf target/test-classes/test-output/* || true  # Cleanup old reports
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
