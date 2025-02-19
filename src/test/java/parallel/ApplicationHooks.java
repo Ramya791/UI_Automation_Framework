@@ -48,6 +48,10 @@ public class ApplicationHooks {
 
     @After(order = 0)
     public void quitBrowser() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        } else {
+            System.out.println("Driver is null, skipping browser quit.");
+        }
     }
 }
