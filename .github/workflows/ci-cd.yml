@@ -40,5 +40,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Test-Reports
-          path: target/test-classes/test-output/
+          path: test-output/
           retention-days: 7
