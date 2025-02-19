@@ -30,21 +30,21 @@ public class ApplicationHooks {
         driver.get(prop.getProperty("url"));
     }
 
-    @After(order = 1)
-    public void tearDown(Scenario scenario) {
-//        if (scenario.isFailed()) {
-//            String screenshotName = scenario.getName().replaceAll(" ", "_");
-//            byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//            scenario.attach(sourcePath, "image/png", screenshotName);
-//        }
+//     @After(order = 1)
+//     public void tearDown(Scenario scenario) {
+// //        if (scenario.isFailed()) {
+// //            String screenshotName = scenario.getName().replaceAll(" ", "_");
+// //            byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+// //            scenario.attach(sourcePath, "image/png", screenshotName);
+// //        }
         
-        if (scenario.isFailed()) {
-            // Capture Screenshot for failed tests
-            byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", scenario.getName());
-        }
-        quitBrowser();
-    }
+//         if (scenario.isFailed()) {
+//             // Capture Screenshot for failed tests
+//             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//             scenario.attach(screenshot, "image/png", scenario.getName());
+//         }
+//         quitBrowser();
+//     }
 
     @After(order = 0)
     public void quitBrowser() {
