@@ -1,0 +1,10 @@
+parallel\CartPageSteps.class
+parallel\CheckoutConfirmationPageSteps.class
+parallel\CheckoutPageSteps.class
+parallel\HomePageSteps.class
+testRunner\MyTestRunner.class
+parallel\LoginPageSteps.class
+parallel\ParallelRun.class
+parallel\ApplicationHooks.class
+parallel\CommonSteps.class
+parallel\NavBarSteps.class
