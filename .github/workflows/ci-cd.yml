@@ -13,7 +13,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3  # Checks out your code from the repo
-        
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'adoptopenjdk' # Uses the AdoptOpenJDK JDK
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -27,6 +32,10 @@ jobs:
 
       - name: Run Selenium Tests
         run: mvn test  # Executes all test cases
+
+      - name: Clean Old Reports
+        run: rm -rf target/test-classes/test-output/* || true  # Cleanup old reports
+
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
