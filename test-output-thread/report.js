@@ -1,91 +1,91 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "c75afea6-033c-4771-99e5-5674746ac07a",
-    "feature": "User login flow",
-    "scenario": "User tries to log in with invalid credentials",
-    "start": 1739993284354,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1739993287913,
-    "className": "passed"
-  },
-  {
-    "id": "390d1a4d-f29c-45e7-bc89-5a0f182e6ed2",
-    "feature": "User login flow",
-    "scenario": "User tries to log in with incomplete credentials",
-    "start": 1739993290805,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1739993293621,
-    "className": "passed"
-  },
-  {
-    "id": "0c68a58f-0dea-4f9e-b2ec-3f9b7e919929",
-    "feature": "User checkout flow",
-    "scenario": "User adds product to cart and proceeds to checkout with incomplete details",
-    "start": 1739993268404,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1739993272483,
-    "className": "passed"
-  },
-  {
-    "id": "6ed9513f-39e6-4d25-8807-a4b75e7b25cb",
-    "feature": "User checkout flow",
-    "scenario": "User adds product to cart and proceeds to checkout with incomplete details",
-    "start": 1739993276713,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1739993280918,
-    "className": "passed"
-  },
-  {
-    "id": "738b9c79-c60a-4b9e-98b3-6cbea539fb68",
+    "id": "1d8f19f0-91e1-4edf-97e4-509ecf97fb5f",
     "feature": "User login flow",
     "scenario": "User logs in with valid credentials",
-    "start": 1739993280923,
+    "start": 1739995115090,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1739993284354,
+    "end": 1739995118568,
     "className": "passed"
   },
   {
-    "id": "6bf35ce8-b551-4fc7-bbc2-ddf6e77eb9d2",
-    "feature": "User checkout flow",
-    "scenario": "User adds product to cart and proceeds to checkout",
-    "start": 1739993260530,
-    "group": 1,
-    "content": "",
-    "tags": "",
-    "end": 1739993268392,
-    "className": "passed"
-  },
-  {
-    "id": "0328fc10-1335-42aa-b623-f54fb99a2d21",
+    "id": "4df25aeb-61dd-4e81-9bc8-4c19f4da6e10",
     "feature": "User checkout flow",
     "scenario": "User adds product to cart and proceeds to checkout with incomplete details",
-    "start": 1739993272483,
+    "start": 1739995106964,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1739993276703,
+    "end": 1739995111098,
     "className": "passed"
   },
   {
-    "id": "681d2b54-14d5-4461-93db-ded6b9638b3f",
-    "feature": "User login flow",
-    "scenario": "User tries to log in with incomplete credentials",
-    "start": 1739993287913,
+    "id": "14fc8294-dd68-4085-8ab8-262e7b490ada",
+    "feature": "User checkout flow",
+    "scenario": "User adds product to cart and proceeds to checkout with incomplete details",
+    "start": 1739995111116,
     "group": 1,
     "content": "",
     "tags": "",
-    "end": 1739993290801,
+    "end": 1739995115090,
+    "className": "passed"
+  },
+  {
+    "id": "0ddfe610-bece-4489-b23b-64ed13cf8153",
+    "feature": "User login flow",
+    "scenario": "User tries to log in with incomplete credentials",
+    "start": 1739995123775,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1739995126232,
+    "className": "passed"
+  },
+  {
+    "id": "13fc6ff0-f03b-4ed9-88bf-4c900400dffd",
+    "feature": "User login flow",
+    "scenario": "User tries to log in with invalid credentials",
+    "start": 1739995118568,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1739995121040,
+    "className": "passed"
+  },
+  {
+    "id": "ab6f278d-4c15-427f-a463-f407bb92616f",
+    "feature": "User checkout flow",
+    "scenario": "User adds product to cart and proceeds to checkout",
+    "start": 1739995095463,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1739995102754,
+    "className": "passed"
+  },
+  {
+    "id": "529e6291-5c47-482a-85e3-9d472687643c",
+    "feature": "User checkout flow",
+    "scenario": "User adds product to cart and proceeds to checkout with incomplete details",
+    "start": 1739995102773,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1739995106948,
+    "className": "passed"
+  },
+  {
+    "id": "006ee856-c183-49e8-9b80-bf8016148d00",
+    "feature": "User login flow",
+    "scenario": "User tries to log in with incomplete credentials",
+    "start": 1739995121046,
+    "group": 1,
+    "content": "",
+    "tags": "",
+    "end": 1739995123766,
     "className": "passed"
   }
 ]);

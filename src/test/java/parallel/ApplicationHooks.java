@@ -43,6 +43,7 @@ public class ApplicationHooks {
             byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
+        quitBrowser();
     }
 
     @After(order = 0)
