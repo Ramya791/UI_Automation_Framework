@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin' # Uses the Eclipse Temurin JDK
+          distribution: 'temurin'  # Uses the Eclipse Temurin JDK
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -29,6 +29,22 @@ jobs:
 
       - name: Install dependencies
         run: mvn clean install -DskipTests  # Installs dependencies but skips tests
+
+      # Set up Microsoft Edge
+      - name: Set up Microsoft Edge
+        uses: microsoft/setup-msedge@v1
+
+      # Set up EdgeDriver
+      - name: Set up EdgeDriver
+        uses: microsoft/setup-msedge-driver@v1
+        with:
+          msedgedriver-version: 'latest'  # You can specify a version if needed
+
+      # Install Edge dependencies (for headless mode)
+      - name: Install Edge dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libgdk-pixbuf2.0-0 libxss1 libappindicator3-1 libindicator7
 
       - name: Run Selenium Tests
         run: mvn test  # Executes all test cases

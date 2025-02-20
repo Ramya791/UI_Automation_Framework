@@ -1,8 +1,12 @@
 package com.factory;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -30,8 +34,19 @@ public class DriverFactory {
 	   }
 	   else if (browser.equals("edge"))
 	   {
+//		   WebDriverManager.edgedriver().setup();
+//		   tlDriver.set(new EdgeDriver());
+		   
 		   WebDriverManager.edgedriver().setup();
-		   tlDriver.set(new EdgeDriver());
+		    
+		    // Create EdgeOptions
+		    EdgeOptions options = new EdgeOptions();
+
+		    // Use setCapability instead of addArguments
+		    options.setCapability("ms:edgeOptions", Collections.singletonMap("args", new String[]{"--headless", "--disable-gpu"}));
+
+		    // Initialize EdgeDriver with options
+		    tlDriver.set(new EdgeDriver(options));
 	   }
 	   else if(browser.equals("safari"))
 	   {
