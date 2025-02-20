@@ -35,13 +35,16 @@ jobs:
           sudo apt update
           sudo apt install -y microsoft-edge-stable
 
-      - name: Install Microsoft Edge WebDriver
+      - name: Install Matching Microsoft Edge WebDriver
         run: |
           EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
+          echo "Detected Edge version: $EDGE_VERSION"
           wget -q "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip"
           unzip edgedriver_linux64.zip
           sudo mv msedgedriver /usr/local/bin/
           rm edgedriver_linux64.zip
+
+          
 
       # Install Edge dependencies (for headless mode)
       - name: Install Edge dependencies
