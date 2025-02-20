@@ -30,31 +30,31 @@ jobs:
       - name: Install dependencies
         run: mvn clean install -DskipTests  # Installs dependencies but skips tests
 
-     
-
-      - name: Install Microsoft Edge and matching WebDriver
+      - name: Install Microsoft Edge 133
         run: |
          sudo apt update
-         sudo apt install -y microsoft-edge-stable
-
-       
+         sudo apt install -y microsoft-edge-stable=133.*  # Install Edge version 133 explicitly
          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
          echo "Installed Edge version: $EDGE_VERSION"
 
-   
+      - name: Install Edge WebDriver
+        run: |
+         EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
+         echo "Installing WebDriver for Edge version: $EDGE_VERSION"
          wget -q "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip" -O edgedriver.zip
          unzip edgedriver.zip
          sudo mv msedgedriver /usr/local/bin/
          sudo chmod +x /usr/local/bin/msedgedriver
          rm edgedriver.zip
 
-
-   
-    
+      - name: Install Edge dependencies (for headless mode)
+        run: |
+         sudo apt-get update
+         sudo apt-get install -y libnss3 libgdk-pixbuf2.0-0 libxss1 libappindicator3-1 libindicator7
 
       - name: Run Selenium Tests
         env:
-          WEBDRIVER_PATH: "/usr/local/bin/msedgedriver"
+          WEBDRIVER_PATH: "/usr/local/bin/msedgedriver"  # Ensure correct path to msedgedriver
         run: mvn test  # Executes all test cases
 
       - name: Upload Extent Reports (Spark + PDF)
