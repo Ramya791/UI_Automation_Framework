@@ -30,8 +30,25 @@ public class DriverFactory {
 	   }
 	   else if (browser.equals("edge"))
 	   {
-		   WebDriverManager.edgedriver().setup();
-		   tlDriver.set(new EdgeDriver());
+//		   WebDriverManager.edgedriver().setup();
+//		   tlDriver.set(new EdgeDriver());
+		   
+		   // Set up the EdgeDriver using WebDriverManager
+		    WebDriverManager.edgedriver().setup();
+		    
+		    // Create EdgeOptions and add the unique user-data-dir argument
+		    EdgeOptions options = new EdgeOptions();
+		    
+		    // Ensure the user data directory is unique by using a timestamp
+		    String userDataDir = "/tmp/selenium_" + System.currentTimeMillis();  // Unique directory
+		    options.addArguments("--user-data-dir=" + userDataDir);
+		    
+		    // Add other options like headless mode if needed
+		    options.addArguments("--headless");
+		    options.addArguments("--disable-gpu");
+		    
+		    // Initialize the driver with the options
+		    tlDriver.set(new EdgeDriver(options));
 	   }
 	   else if(browser.equals("safari"))
 	   {
