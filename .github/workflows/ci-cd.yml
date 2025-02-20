@@ -14,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3  # Checks out your code from the repo
 
-      - name: Set up JDK 8
+      - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: '8'
-          distribution: 'temurin'  # Using Eclipse Temurin distribution for JDK 8
+          java-version: '11'
+          distribution: 'temurin' # Uses the Eclipse Temurin JDK
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -33,12 +33,11 @@ jobs:
       - name: Run Selenium Tests
         run: mvn test  # Executes all test cases
 
-      # - name: Clean Old Reports
-      #   run: rm -rf target/test-classes/test-output/* || true  # Cleanup old reports
-
-      - name: Upload Test Reports
+      - name: Upload Extent Reports (Spark + PDF)
         uses: actions/upload-artifact@v4
         with:
-          name: Test-Reports
-          path: test-output/
-          retention-days: 7
+          name: ExtentReports
+          path: |
+            test-output/SparkReport
+            test-output/ExtentPdfReport.pdf
+          if-no-files-found: warn  # Avoids failure if no reports are found
