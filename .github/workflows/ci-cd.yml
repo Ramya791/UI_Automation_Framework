@@ -68,6 +68,7 @@ jobs:
         with:
           name: ExtentReports
           path: |
-            test-output/SparkReport
-            test-output/ExtentPdfReport.pdf
+            # test-output/SparkReport
+            # test-output/ExtentPdfReport.pdf
+              test-output/
           if-no-files-found: warn  # Avoids failure if no reports are found
