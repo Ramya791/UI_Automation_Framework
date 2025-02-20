@@ -27,7 +27,13 @@ public class ApplicationHooks {
         String browserName = prop.getProperty("browser");
         driverFactory = new DriverFactory();
         driver = driverFactory.init_driver(browserName);
+         if(driver==null)
+        {
+            System.out.println("driver initialization failed");
+        }
+    
         driver.get(prop.getProperty("url"));
+        System.out.println(driver);
     }
 
 //     @After(order = 1)
