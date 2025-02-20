@@ -47,6 +47,8 @@ public class DriverFactory {
 
 		    // Initialize EdgeDriver with options
 		    tlDriver.set(new EdgeDriver(options));
+		    
+		    System.out.println("Hello!!Testing CI-CD here");
 	   }
 	   else if(browser.equals("safari"))
 	   {
