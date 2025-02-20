@@ -1,8 +1,12 @@
 package com.factory;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -33,21 +37,15 @@ public class DriverFactory {
 //		   WebDriverManager.edgedriver().setup();
 //		   tlDriver.set(new EdgeDriver());
 		   
-		   // Set up the EdgeDriver using WebDriverManager
-		    WebDriverManager.edgedriver().setup();
+		   WebDriverManager.edgedriver().setup();
 		    
-		    // Create EdgeOptions and add the unique user-data-dir argument
+		    // Create EdgeOptions
 		    EdgeOptions options = new EdgeOptions();
-		    
-		    // Ensure the user data directory is unique by using a timestamp
-		    String userDataDir = "/tmp/selenium_" + System.currentTimeMillis();  // Unique directory
-		    options.addArguments("--user-data-dir=" + userDataDir);
-		    
-		    // Add other options like headless mode if needed
-		    options.addArguments("--headless");
-		    options.addArguments("--disable-gpu");
-		    
-		    // Initialize the driver with the options
+
+		    // Use setCapability instead of addArguments
+		    options.setCapability("ms:edgeOptions", Collections.singletonMap("args", new String[]{"--headless", "--disable-gpu"}));
+
+		    // Initialize EdgeDriver with options
 		    tlDriver.set(new EdgeDriver(options));
 	   }
 	   else if(browser.equals("safari"))
