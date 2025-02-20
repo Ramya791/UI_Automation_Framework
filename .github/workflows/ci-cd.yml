@@ -32,11 +32,15 @@ jobs:
 
       - name: Install Microsoft Edge 133
         run: |
-         wget https://msedge.sf.dl.delivery.mp.microsoft.com/filestreaming/edge/stable/133.0.0.0/133.0.0.0_microsoft-edge-stable_amd64.deb
-         sudo dpkg -i 133.0.0.0_microsoft-edge-stable_amd64.deb
-         sudo apt-get install -f  # To resolve any dependencies
+         sudo apt update
+         sudo apt install -y wget curl gpg
+         wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor > /usr/share/keyrings/microsoft-archive-keyring.gpg
+         echo "deb [signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge-stable.list
+         sudo apt update
+         sudo apt install -y microsoft-edge-stable
          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
          echo "Installed Edge version: $EDGE_VERSION"
+
 
 
       - name: Install Edge WebDriver
