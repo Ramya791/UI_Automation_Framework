@@ -30,43 +30,27 @@ jobs:
       - name: Install dependencies
         run: mvn clean install -DskipTests  # Installs dependencies but skips tests
 
-      - name: Install Microsoft Edge 133
+     
+
+      - name: Install Microsoft Edge and matching WebDriver
         run: |
          sudo apt update
-         sudo apt install -y microsoft-edge-stable=133.*  # This will ensure version 133 is installed.
+         sudo apt install -y microsoft-edge-stable
+
+       
          EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
          echo "Installed Edge version: $EDGE_VERSION"
 
-      # - name: Install Microsoft Edge
-      #   run: |
-      #     sudo apt update
-      #     sudo apt install -y microsoft-edge-stable
-      #     EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
-      #     echo "Installed Edge version: $EDGE_VERSION"
+   
+         wget -q "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip" -O edgedriver.zip
+         unzip edgedriver.zip
+         sudo mv msedgedriver /usr/local/bin/
+         sudo chmod +x /usr/local/bin/msedgedriver
+         rm edgedriver.zip
 
-      # - name: Install Matching Microsoft Edge WebDriver
-      #   run: |
-      #     EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
-      #     echo "Installing WebDriver for Edge version: $EDGE_VERSION"
-          
-      #     # Remove any existing Edge WebDriver
-      #     sudo rm -f /usr/local/bin/msedgedriver
-          
-      #     # Download and install matching WebDriver
-      #     wget -q "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip" -O edgedriver.zip
-      #     unzip edgedriver.zip
-      #     sudo mv msedgedriver /usr/local/bin/
-      #     sudo chmod +x /usr/local/bin/msedgedriver
-      #     rm edgedriver.zip
-          
-      #     # Verify WebDriver installation
-      #     /usr/local/bin/msedgedriver --version
 
-      # Install Edge dependencies (for headless mode)
-      - name: Install Edge dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libnss3 libgdk-pixbuf2.0-0 libxss1 libappindicator3-1 libindicator7
+   
+    
 
       - name: Run Selenium Tests
         env:
