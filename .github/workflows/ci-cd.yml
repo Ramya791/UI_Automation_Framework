@@ -41,11 +41,19 @@ jobs:
         run: |
           EDGE_VERSION=$(microsoft-edge --version | awk '{print $3}')
           echo "Installing WebDriver for Edge version: $EDGE_VERSION"
+          
+          # Remove any existing Edge WebDriver
+          sudo rm -f /usr/local/bin/msedgedriver
+          
+          # Download and install matching WebDriver
           wget -q "https://msedgedriver.azureedge.net/$EDGE_VERSION/edgedriver_linux64.zip" -O edgedriver.zip
           unzip edgedriver.zip
           sudo mv msedgedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/msedgedriver
           rm edgedriver.zip
           
+          # Verify WebDriver installation
+          /usr/local/bin/msedgedriver --version
 
       # Install Edge dependencies (for headless mode)
       - name: Install Edge dependencies
@@ -54,6 +62,8 @@ jobs:
           sudo apt-get install -y libnss3 libgdk-pixbuf2.0-0 libxss1 libappindicator3-1 libindicator7
 
       - name: Run Selenium Tests
+        env:
+          WEBDRIVER_PATH: "/usr/local/bin/msedgedriver"
         run: mvn test  # Executes all test cases
 
       - name: Upload Extent Reports (Spark + PDF)
